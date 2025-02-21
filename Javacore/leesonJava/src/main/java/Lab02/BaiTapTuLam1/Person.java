@@ -1,4 +1,4 @@
-package Lab02b1;
+package Lab02.BaiTapTuLam1;
 
 import java.util.Scanner;
 
