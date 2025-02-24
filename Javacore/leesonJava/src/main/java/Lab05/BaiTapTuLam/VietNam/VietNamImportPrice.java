@@ -1,6 +1,6 @@
-package Lab05.BaiTapTuLam2;
+package Lab05.BaiTapTuLam.VietNam;
 
-import Lab05.BaiTapTuLam1.Product;
+import Lab05.BaiTapTuLam.Product.Product;
 
 import java.util.Scanner;
 
@@ -31,13 +31,6 @@ public class VietNamImportPrice extends Product {
         super(prodId, prodName, manufacturer, producerPrice);
         this.taxImported = taxImported;
     }
-    @Override
-    public void input(){
-        super.input();
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter thuế: ");
-        taxImported = sc.nextFloat();
-    }
 
     /**
      *
@@ -46,14 +39,14 @@ public class VietNamImportPrice extends Product {
     @Override
     public float calculateSalePrice() {
         float imported_price = super.getProducerPrice();  // Giá nhập
-        float sale_price = imported_price + taxImported * imported_price + 0.1f * (imported_price + taxImported * imported_price);
+        float sale_price = imported_price + (taxImported) * imported_price + 0.1f * (imported_price + taxImported * imported_price);
         return sale_price;
     }
 
     @Override
     public void display(){
         super.display();
-        System.out.println("Thuế: " + taxImported);
-        System.out.println("Giá Nhập khẩu: " + calculateSalePrice());
+        System.out.println("Thuế: " + (int) (taxImported *100)+"%");
+        System.out.println("Giá Bán Tại Việt Nam: " + calculateSalePrice());
     }
 }

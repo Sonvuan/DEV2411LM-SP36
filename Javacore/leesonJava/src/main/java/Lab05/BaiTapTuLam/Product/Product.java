@@ -1,4 +1,4 @@
-package Lab05.BaiTapTuLam1;
+package Lab05.BaiTapTuLam.Product;
 
 import java.util.Scanner;
 
@@ -57,17 +57,7 @@ public class Product {
         this.producerPrice = producerPrice;
     }
 
-    public void input(){
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter product ID: ");
-        prodId = sc.nextLine();
-        System.out.print("Enter product name: ");
-        prodName = sc.nextLine();
-        System.out.print("Enter product manufacturer: ");
-        manufacturer = sc.nextLine();
-        System.out.print("Enter product price: ");
-        producerPrice = sc.nextFloat();
-    }
+
 
     /**
      *
