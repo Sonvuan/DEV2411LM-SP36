@@ -67,7 +67,6 @@ public class Product {
         manufacturer = sc.nextLine();
         System.out.print("Enter product price: ");
         producerPrice = sc.nextFloat();
-        sc.close();
     }
 
     /**
@@ -75,7 +74,8 @@ public class Product {
      * @return ketqua
      */
     public float calculateSalePrice() {
-        return producerPrice + (float) (0.05 * producerPrice);
+      double sale_price =producerPrice + (float) (0.05 * producerPrice);
+        return (float) sale_price;
     }
 
 
@@ -85,7 +85,7 @@ public class Product {
         System.out.println("Product Name: " + prodName);
         System.out.println("Manufacturer: " + manufacturer);
         System.out.println("Producer Price: " + producerPrice);
-        System.out.println("sale_price: "+ calculateSalePrice());
+        System.out.println("sale_price: "+calculateSalePrice());
     }
 
 
