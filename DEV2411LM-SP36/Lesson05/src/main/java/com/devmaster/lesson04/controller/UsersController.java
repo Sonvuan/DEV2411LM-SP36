@@ -26,7 +26,8 @@ public class UsersController {
     @PostMapping("/add")
     public ResponseEntity<String> addUser(@Valid @RequestBody UsersDTO user) {
         usersService.create(user);
-        return ResponseEntity.badRequest().body("User created successfully");
+        return ResponseEntity.ok("User created successfully");
     }
+
 }
 
