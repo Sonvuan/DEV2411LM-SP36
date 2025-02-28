@@ -8,9 +8,15 @@ import java.util.Comparator;
 import java.util.Scanner;
 
 public class FlowerTest {
+
+    // khai báo arraylist để lưu trữ thông tin
     private ArrayList<Flower> flowers = new ArrayList<Flower>();
     private Scanner sc = new Scanner(System.in);
 
+    /**
+     * thêm thông tin số hoa nhập vào
+     * thêm thông tin chi tiết về từng loại hoa đấy sử dụng vòng for để duyệt nhập
+     */
     public void input(){
         System.out.println("Nhập số lượng hoa: ");
         int n = sc.nextInt();
@@ -23,6 +29,10 @@ public class FlowerTest {
         }
     }
 
+    /**
+     * hiển thị thông tin hoa
+     * dùng for để duyệt và hiển thị thông tin chi tiết của từng hoa
+     */
     public void output(){
         System.out.print("Danh Sách Hoa:");
         for(int i=0; i<flowers.size(); i++){
@@ -31,11 +41,21 @@ public class FlowerTest {
         }
     }
 
+
+    /**
+     * Sắp xếp hoa theo tên
+     * sử dụng collection .sort để sắp xếp theo tên
+     */
     public void sortByName(){
         Collections.sort(flowers, Comparator.comparing(Flower::getFlowerName));
         System.out.println("Bạn đã sắp xếp thành công");
     }
 
+    /**
+     * tìm kiếm hoa theo id
+     * dùng for each để duyệt sử dụng if để tìm kiếm
+     *
+     */
     public void searchById(){
         System.out.print("Nhập mã hoa cần tìm: ");
         String searchId = sc.nextLine();
