@@ -11,7 +11,7 @@ import java.util.List;
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
-    
+
     @GetMapping("/employee-list")
     public List<Employee> getEmployeeList() {
         return employeeService.getEmployeeList();
