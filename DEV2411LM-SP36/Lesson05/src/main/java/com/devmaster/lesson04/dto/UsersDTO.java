@@ -1,4 +1,4 @@
-package com.devmaster.lesson05.dto;
+package com.devmaster.lesson04.dto;
 
 import jakarta.validation.constraints.*;
 import lombok.*;

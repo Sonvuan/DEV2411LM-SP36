@@ -1,4 +1,4 @@
-package com.devmaster.lesson05.exception;
+package com.devmaster.lesson04.exception;
 
 
 import org.springframework.http.HttpStatus;

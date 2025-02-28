@@ -1,9 +1,9 @@
-package com.devmaster.lesson05.service;
+package com.devmaster.lesson04.service;
 
 
 
-import com.devmaster.lesson05.dto.UsersDTO;
-import com.devmaster.lesson05.entity.Users;
+import com.devmaster.lesson04.dto.UsersDTO;
+import com.devmaster.lesson04.entity.Users;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

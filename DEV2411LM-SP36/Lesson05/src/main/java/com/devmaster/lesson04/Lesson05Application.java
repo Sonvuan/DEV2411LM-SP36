@@ -1,4 +1,4 @@
-package com.devmaster.lesson05;
+package com.devmaster.lesson04;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.devmaster.lesson05;
+package com.devmaster.lesson04;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

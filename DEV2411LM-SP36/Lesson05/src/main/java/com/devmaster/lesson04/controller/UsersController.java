@@ -1,10 +1,10 @@
-package com.devmaster.lesson05.controller;
+package com.devmaster.lesson04.controller;
 
 
 
-import com.devmaster.lesson05.dto.UsersDTO;
-import com.devmaster.lesson05.entity.Users;
-import com.devmaster.lesson05.service.UsersService;
+import com.devmaster.lesson04.dto.UsersDTO;
+import com.devmaster.lesson04.entity.Users;
+import com.devmaster.lesson04.service.UsersService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

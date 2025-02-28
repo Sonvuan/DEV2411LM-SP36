@@ -1,4 +1,4 @@
-package com.devmaster.lesson05.entity;
+package com.devmaster.lesson04.entity;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
