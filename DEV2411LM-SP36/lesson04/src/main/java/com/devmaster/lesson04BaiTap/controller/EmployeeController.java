@@ -19,8 +19,6 @@ import java.util.Optional;
 public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
-    @Autowired
-    private KhoaService khoaService;
 
     @GetMapping("/list")
     public List<Employee> list() {
