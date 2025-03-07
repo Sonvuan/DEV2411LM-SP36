@@ -7,10 +7,10 @@
 <body>
 <header th:replace="fragments/user_layout :: header"></header>
 
-<section class="container">
-    <h1>Đây là trang chủ dành cho khách truy cập.</h1>
+<section th:replace="fragments/user_layout :: section" >
+
 </section>
 
-<footer th:replace="fragments/user_layout :: footer"></footer>
+<footer th:replace="fragments/_layout :: footer"></footer>
 </body>
 </html>

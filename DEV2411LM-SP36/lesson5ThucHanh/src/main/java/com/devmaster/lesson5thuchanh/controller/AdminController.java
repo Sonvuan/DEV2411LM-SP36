@@ -16,6 +16,7 @@ public class AdminController {
     @GetMapping("/users")
     public String listUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
+        model.addAttribute("isUserPage", false);
         return "admin/users";
     }
 
