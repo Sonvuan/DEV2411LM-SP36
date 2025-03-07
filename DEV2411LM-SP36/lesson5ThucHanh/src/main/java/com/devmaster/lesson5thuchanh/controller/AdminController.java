@@ -23,18 +23,21 @@ public class AdminController {
     @GetMapping("/add")
     public String addUser(Model model) {
         model.addAttribute("user", new User());
+        model.addAttribute("isUserPage", false);
         return "admin/user_form";
     }
 
     @GetMapping("/edit/{id}")
     public String editUser(@PathVariable Long id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
+        model.addAttribute("isUserPage", false);
         return "admin/user_form";
     }
 
     @PostMapping("/save")
     public String saveUser(@ModelAttribute User user) {
         userService.saveUser(user);
+        
         return "redirect:/admin/users";
     }
 

@@ -21,12 +21,14 @@ public class userController {
     }
 
     @GetMapping("/about")
-    public String about() {
+    public String about(Model model) {
+        model.addAttribute("isUserPage", true);
         return "user/about";
     }
 
     @GetMapping("/contact")
-    public String contact() {
+    public String contact(Model model) {
+        model.addAttribute("isUserPage", true);
         return "user/contact";
     }
 }
