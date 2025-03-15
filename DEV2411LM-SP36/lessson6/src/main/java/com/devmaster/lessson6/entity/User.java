@@ -2,13 +2,15 @@ package com.devmaster.lessson6.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import lombok.*;
 
 @Entity
 @Table(name="users")
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,24 +20,29 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="fullname")
-    private String fullname;
+    @NotBlank(message = "Họ và tên không được để trống")
+    @Size(min =3, message = "Họ và tên phải ít nhất 3 ký tự")
+    private String fullName;
 
-    @Column(name = "username", unique = true)
-    private String username;
+    @NotBlank(message = "Tài khoản không được để trống")
+    @Size(min =3, message = "Tài khoản phải ít nhất 3 ký tự")
+    @Column( unique = true, nullable = false)
+    private String userName;
 
-    @Column(name="password")
+    @NotBlank(message = "Mật khẩu không được để trống")
+    @Size(min =6, message = "Mật khẩu phải ít nhất 6 ký tự")
     private String password;
 
-    @Column(name="email")
+    @NotBlank(message = "Email không được để trống")
+    @Email(message = "Email không đúng định dạng")
     private String email;
 
-    @Column(name = "phone")
+    @Pattern(regexp = "\\+?[0-9]{10,15}$", message = "Điện thoại phải chứa ký tự số có độ dài trong khoảng 10 - 15")
     private String phone;
 
-    @Column(name = "address")
+
     private String address;
 
-    @Column(name="isactive")
-    private boolean isactive;
+
+    private Boolean isActive;
 }

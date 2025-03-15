@@ -7,4 +7,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     // Bổ sung code nếu cần
+    // truy vấn dữ liệu
+    // kiểm tra userName trùng
+    boolean existsByUserName(String userName);
+
 }
