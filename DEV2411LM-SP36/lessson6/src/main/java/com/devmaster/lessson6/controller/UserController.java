@@ -39,7 +39,6 @@ public class UserController {
         return "user/form";
     }
 
-
     // tạo mới người dùng
     @PostMapping("/save")
     public String saveUser(@Validated @ModelAttribute("user") User user, BindingResult result, Model model) {

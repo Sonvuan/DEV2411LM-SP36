@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+//ACID
 @Service
 public class UserService {
     @Autowired
@@ -43,7 +43,7 @@ public class UserService {
 
     }
 
-
+    // 10
 
     // xóa người dùng
     @Transactional

@@ -13,7 +13,6 @@ import java.util.Date;
 public class CustomerDTO {
     private Long id;
     private String username;
-    private String password;
     private String fullName;
     private String address;
     private int phone;

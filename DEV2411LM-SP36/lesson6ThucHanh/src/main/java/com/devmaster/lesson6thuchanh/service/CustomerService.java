@@ -27,7 +27,7 @@ public class CustomerService {
         CustomerDTO customerDTO =  CustomerDTO.builder()
                 .id(customer.getId())
                 .username(customer.getUsername())
-                .password(customer.getPassword())
+
                 .fullName(customer.getFullName())
                 .address(customer.getAddress())
                 .phone(customer.getPhone())
@@ -41,7 +41,7 @@ public class CustomerService {
     public Boolean save(CustomerDTO customerDTO) {
         Customer customer = Customer.builder()
                 .username(customerDTO.getUsername())
-                .password(customerDTO.getPassword())
+
                 .fullName(customerDTO.getFullName())
                 .address(customerDTO.getAddress())
                 .phone(customerDTO.getPhone())
@@ -63,7 +63,7 @@ public class CustomerService {
         return customerRepository.findById(id)
                 .map(customer -> {
                     customer.setUsername(customerDTO.getUsername());
-                    customer.setPassword(customerDTO.getPassword());
+
                     customer.setFullName(customerDTO.getFullName());
                     customer.setAddress(customerDTO.getAddress());
                     customer.setPhone(customerDTO.getPhone());
