@@ -7,7 +7,7 @@
 </head>
 <body style="background: #ccc">
 <section class="container bg-white mt-5 p-3">
-    <form th:action="@{/authors/create}" th:object="${author}" method="post">
+    <form th:action="@{/authors/create}" th:object="${author}" method="post" enctype="multipart/form-data">
         <div class="card m-3">
             <div class="card-header">
                 <h1 th:text="${author.id != null ? 'Edit author' : 'Create author'}">author Form</h1>
@@ -29,19 +29,26 @@
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">imageUrl:</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" th:field="*{imgUrl}">
+                        <input type="file"  name="imageAuthor" id="imageAuthor">
+                        <input type="hidden" width="50px"  class="form-control" th:field="*{imgUrl}" id="imgUrl">
                     </div>
                 </div>
+<!--                <div class="row mb-3">-->
+<!--                    <label class="col-sm-2 col-form-label">imageUrl:</label>-->
+<!--                    <div class="col-sm-10">-->
+<!--                        <input type="text" class="form-control" th:field="*{imgUrl}">-->
+<!--                    </div>-->
+<!--                </div>-->
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">email:</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" th:field="*{email}" placeholder="Quantity" >
+                        <input type="email" class="form-control" th:field="*{email}"  >
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Phone:</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" th:field="*{phone}" placeholder="Price" >
+                        <input type="number" class="form-control" th:field="*{phone}"  >
                     </div>
                 </div>
                 <div class="row mb-3">
