@@ -30,6 +30,6 @@ public class Author {
     Boolean isActive;
 
     // tạo mối quan hệ với bảng book
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany(mappedBy = "authors") // mappedBy = "authors" có nghĩa là Book đã quản lý mối quan hệ này
     List<Book> books = new ArrayList<>();
 }

@@ -30,9 +30,9 @@ public class Book {
     // Tạo mối quan hệ với bảng author
     @ManyToMany
     @JoinTable(
-            name = "Book_Author",
-            joinColumns = @JoinColumn(name ="bookId"),
-            inverseJoinColumns = @JoinColumn(name = "authorId")
+            name = "Book_Author", // tên bảng trung gian
+            joinColumns = @JoinColumn(name ="bookId"), // khóa chính của book
+            inverseJoinColumns = @JoinColumn(name = "authorId") // khóa chính của author
     )
      List<Author> authors = new ArrayList<>();
 }

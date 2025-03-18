@@ -47,41 +47,58 @@ public class BookController {
         return "books/book-form";
     }
 
+    /**
+     * Xử lý thêm mới sách, bao gồm lưu thông tin sách, lưu ảnh lên server và liên kết với tác giả.
+     *
+     * @param book      Đối tượng Book nhận từ form, chứa thông tin sách.
+     * @param authorIds Danh sách ID của các tác giả được chọn từ form.
+     * @param imageFile Ảnh sách được tải lên từ form.
+     * @return Chuyển hướng về trang danh sách sách sau khi lưu thành công.
+     */
     @PostMapping("/new")
-    public String saveBook(@ModelAttribute("book") Book book
-                           , @RequestParam List<Long> authorIds
-                           ,@RequestParam("imageBook") MultipartFile imageFile) {
-        if(!imageFile.isEmpty()) {
-            try{
-                // tạo thu mục nếu chưa tồn tại
-                Path uploadPath = Paths.get(UPLOAD_DIR+UPLOAD_PathFile);
-                if(!Files.exists(uploadPath)) {
+    public String saveBook(@ModelAttribute("book") Book book,
+                           @RequestParam List<Long> authorIds,
+                           @RequestParam("imageBook") MultipartFile imageFile) {
+        // Kiểm tra nếu có ảnh được tải lên
+        if (!imageFile.isEmpty()) {
+            try {
+                // Tạo đường dẫn thư mục lưu ảnh
+                Path uploadPath = Paths.get(UPLOAD_DIR + UPLOAD_PathFile);
+
+                // Nếu thư mục chưa tồn tại, tạo mới
+                if (!Files.exists(uploadPath)) {
                     Files.createDirectories(uploadPath);
                 }
-                // lấy phần mở rộng của file ảnh
+
+                // Lấy tên file gốc và phần mở rộng
                 String originalFileName = StringUtils.cleanPath(imageFile.getOriginalFilename());
                 String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
 
-                // lưu file lên server
-                // string filename = imageFile.getOriginalFilename();
-                // Path uploadPath = Paths.get(UPLOAD_DIR+UPLOAD_PathFile);
-
-                //Tạo tên file mới + phần mở rộng gốc
+                // Tạo tên file mới dựa trên mã sách
                 String newFileName = book.getCode() + fileExtension;
                 Path filePath = uploadPath.resolve(newFileName);
+
+                // Lưu file ảnh vào thư mục
                 Files.copy(imageFile.getInputStream(), filePath);
 
-                // lưu đường dẫn ảnh vào thuộc tính imgUrl của Book
+                // Lưu đường dẫn ảnh vào thuộc tính imgUrl của sách
                 book.setImgUrl("/" + UPLOAD_PathFile + newFileName);
             } catch (IOException e) {
-                e.printStackTrace();
+                e.printStackTrace(); // Ghi log lỗi nếu có
             }
         }
+
+        // Lấy danh sách tác giả theo ID và gán vào sách
         List<Author> authors = new ArrayList<>(authorService.findAllById(authorIds));
         book.setAuthors(authors);
+
+        // Lưu sách vào database
         bookService.saveBook(book);
+
+        // Chuyển hướng về danh sách sách
         return "redirect:/books";
     }
+
 
     // Form sửa thông tin sách
     @GetMapping("/edit/{id}")
