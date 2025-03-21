@@ -15,17 +15,15 @@ public class AuthorService {
     public List<Author> findAll() {
         return authorRepository.findAll();
     }
+
     public Author findById(Long id) {
         return authorRepository.findById(id).orElse(null);
     }
+
     public Author save(Author author) {
         return authorRepository.save(author);
     }
 
-    // lẤy ra những tác giả được chọn
-    public List<Author> findAllById(List<Long> ids) {
-        return authorRepository.findAllById(ids);
-    }
     public void delete(Long id) {
         authorRepository.deleteById(id);
     }

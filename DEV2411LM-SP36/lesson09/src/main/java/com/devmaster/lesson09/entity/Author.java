@@ -30,7 +30,7 @@ public class Author {
     Boolean isActive;
 
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "author",cascade = CascadeType.REMOVE, orphanRemoval = true)
     List<BookAuthor> bookAuthors = new ArrayList<>();
 
 }

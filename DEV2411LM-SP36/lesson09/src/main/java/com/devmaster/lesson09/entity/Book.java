@@ -32,9 +32,15 @@ public class Book {
     List<BookAuthor> bookAuthors = new ArrayList<>();
 
     // Thêm phương thức getter để lấy danh sách tác giả trực tiếp
+//    public List<Author> getAuthors() {
+//        return bookAuthors.stream()
+//                .map(BookAuthor::getAuthor)
+//                .collect(Collectors.toList());
+//    }
     public List<Author> getAuthors() {
         return bookAuthors.stream()
                 .map(BookAuthor::getAuthor)
-                .collect(Collectors.toList());
+                .toList(); // Chỉ hỗ trợ từ Java 16
     }
+
 }
