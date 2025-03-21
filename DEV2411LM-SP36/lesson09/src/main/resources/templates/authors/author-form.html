@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Author Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body style="background: #ccc">
+<section class="container bg-white mt-5 p-3">
+    <form th:action="@{/authors/create}" th:object="${author}" method="post" enctype="multipart/form-data">
+        <div class="card m-3">
+            <div class="card-header">
+                <h1 th:text="${author.id != null ? 'Edit author' : 'Create author'}">author Form</h1>
+            </div>
+            <div class="card-body">
+                <input type="hidden" th:if="${author.id != null}" th:value="${author.id}" name="id"/>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">author Name:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{name}" placeholder="author Name" >
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Code:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{code}" placeholder="author Name" >
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">imageUrl:</label>
+                    <div class="col-sm-10">
+                        <input type="file"  name="imageAuthor" id="imageAuthor">
+                        <input type="hidden" width="50px"  class="form-control" th:field="*{imgUrl}" id="imgUrl">
+                    </div>
+                </div>
+<!--                <div class="row mb-3">-->
+<!--                    <label class="col-sm-2 col-form-label">imageUrl:</label>-->
+<!--                    <div class="col-sm-10">-->
+<!--                        <input type="text" class="form-control" th:field="*{imgUrl}">-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">email:</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" th:field="*{email}"  >
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Phone:</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" th:field="*{phone}"  >
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Address:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{address}">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Description:</label>
+                    <div class="col-sm-10">
+                        <textarea  class="form-control" th:field="*{description}"></textarea>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">isActive:</label>
+                    <div class="col-sm-10">
+                        <input type="checkbox" checked th:field="*{isActive}" />
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-success" th:text="${author.id !=null ? 'Update' : 'Create'}">Save</button>
+                <a th:href="@{/authors}" class="btn btn-secondary">Back to List</a>
+
+            </div>
+        </div>
+    </form>
+</section>
+</body>
+</html>

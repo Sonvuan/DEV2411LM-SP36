@@ -33,6 +33,7 @@ public class Book {
             name = "Book_Author", // tên bảng trung gian
             joinColumns = @JoinColumn(name ="bookId"), // khóa chính của book
             inverseJoinColumns = @JoinColumn(name = "authorId") // khóa chính của author
+            
     )
      List<Author> authors = new ArrayList<>();
 }
