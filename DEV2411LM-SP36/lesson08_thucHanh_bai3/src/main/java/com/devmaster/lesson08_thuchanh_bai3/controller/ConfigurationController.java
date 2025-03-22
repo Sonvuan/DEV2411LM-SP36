@@ -8,13 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/config")
+@RequestMapping("/configs")
 public class ConfigurationController {
     @Autowired
     private ConfigurationService configurationService;
-
-    private static final String UPLOAD_DIR = "src/main/resources/";
-    private static final String UPLOAD_PathFile="images/avatars/";
 
     @GetMapping
     public String configuration(Model model) {
@@ -29,17 +26,17 @@ public class ConfigurationController {
     @PostMapping("/create")
     public String saveConfiguration(@ModelAttribute("config") Configuration configuration) {
         configurationService.saveConfiguration(configuration);
-        return "redirect:/config";
+        return "redirect:/configs";
     }
-    @PostMapping("/edit/{id}")
+    @GetMapping("/edit/{id}")
     public String edit(@PathVariable Long id, Model model) {
         model.addAttribute("config",configurationService.getConfigurationById(id));
         return "configs/config-form";
     }
-    @GetMapping("/edit/{id}")
+    @GetMapping("/delete/{id}")
     public String delete(@PathVariable Long id, Model model) {
         configurationService.deleteConfigurationById(id);
-        return "redirect:/config";
+        return "redirect:/configs";
     }
 }
 

@@ -9,7 +9,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "configurations")
-@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,6 +23,6 @@ public class Configuration {
     Boolean isActive;
 
     // tạo mối quan hệ với bảng Product
-    @ManyToMany (mappedBy = "products")
+    @ManyToMany (mappedBy = "configurations")
     List<Product> products = new ArrayList<>();
 }

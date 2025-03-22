@@ -80,7 +80,7 @@ public class AuthorController {
         return "redirect:/authors";
     }
 
-    @PostMapping("/edit/{id}")
+    @GetMapping("/edit/{id}")
     public String editAuthor(@PathVariable Long id, Model model) {
         model.addAttribute("author", authorService.findById(id));
         return "authors/author-form";

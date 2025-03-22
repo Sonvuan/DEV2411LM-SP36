@@ -26,7 +26,7 @@ public class ProductController {
     @Autowired
     private ConfigurationService configurationService;
 
-    private static final String UPLOAD_DIR = "src/main/resources/";
+    private static final String UPLOAD_DIR = "src/main/resources/static/";
     private static final String UPLOAD_PathFile="images/products/";
 
     @GetMapping
@@ -84,14 +84,23 @@ public class ProductController {
         return "redirect:/products";
     }
 
-    @PostMapping("/edit/{id}")
+    @GetMapping("/edit/{id}")
     public String editProduct(@PathVariable Long id, Model model) {
         Product product = productService.findById(id);
+
+        // Lấy danh sách ID của các configuration đã chọn
+        List<Long> configIds = product.getConfigurations().stream()
+                .map(Configuration::getId)
+                .toList();
+
         model.addAttribute("product", product);
         model.addAttribute("configs", configurationService.getAllConfigurations());
+        model.addAttribute("selectedConfigIds", configIds); // Thêm danh sách ID vào model
+
         return "products/product-form";
     }
-    @GetMapping("delete/{id}")
+
+    @GetMapping("/delete/{id}")
     public String deleteProduct(@PathVariable Long id) {
         productService.delete(id);
         return "redirect:/products";

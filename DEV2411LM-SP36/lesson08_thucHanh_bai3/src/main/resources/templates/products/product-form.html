@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>product Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body style="background: #ccc">
+<section class="container bg-white mt-5 p-3">
+    <form th:action="@{/products/create}" th:object="${product}" method="post" enctype="multipart/form-data">
+        <div class="card m-3">
+            <div class="card-header">
+                <h1 th:text="${product.id != null ? 'Edit product' : 'Create product'}">product Form</h1>
+            </div>
+            <div class="card-body">
+                <input type="hidden" th:if="${product.id != null}" th:value="${product.id}" name="id"/>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Name:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{name}" id="name"  required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">imageUrl:</label>
+                    <div class="col-sm-10">
+                        <input type="file"  name="imageProduct" id="imageProduct">
+                        <input type="hidden" width="50px"  class="form-control" th:field="*{imgUrl}" id="imgUrl">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Quantity:</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" th:field="*{quantity}" id="quantity"  required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Price:</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" th:field="*{price}" id="price" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Configs:</label>
+                    <div class="col-sm-10 d-flex">
+                        <div th:each="config : ${configs}" class="mx-2 px-2">
+                            <input type="checkbox" name="configIds" th:id="'chkAuth_' + ${config.id}"
+                                   th:value="${config.id}"
+                                   th:checked="${#lists.contains(selectedConfigIds, config.id)}">
+                            <label th:for="'chkAuth_' + ${config.id}" th:text="${config.name}"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">isActive:</label>
+                    <div class="col-sm-10">
+                        <input type="checkbox" checked th:field="*{isActive}" id="isActive" >
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-success" th:text="${product.id !=null ? 'Update' : 'Create'}">Save</button>
+                <a th:href="@{/products}" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </form>
+</section>
+</body>
+</html>
